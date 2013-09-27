@@ -22,9 +22,25 @@ body {overflow:hidden;font-size:70px;}
 	
 	
 </style>
-
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
+	var winHeight = 0;
+	var winWidth = 0;
+	
+	function ridimensionaImg(winWidth,winHeight) {
+		$('#primopiano').css({'top': $('#logo').height() + 3 +'px','height': winHeight - $('#logo').height() - 130 + 'px'});
+		
+		
+	}
+	
+	$(document).ready(function(){ 
+	
+		ridimensionaImg($(window).width(),$(window).height());
+	
+	
+	});
 /*
 $(function () {	
 	var map = null;
