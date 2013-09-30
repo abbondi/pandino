@@ -8,7 +8,8 @@
     <meta name="author" content="Alessio Morganti">
 	<link rel="stylesheet" href="css/idangerous.swiper.css">
 	<link rel="stylesheet" href="css/idangerous.swiper.scrollbar.css">
-
+    <link rel="stylesheet" href="http://www.massimoabbondi.it/apps/pandino/pandino.css">
+	
     <style>
         body {
 			width: 100%;
@@ -64,8 +65,17 @@
 			top:0;
 			left:0;
 			right:0;
-			background:#000 url(img/logo.png) top left no-repeat;
-			border-bottom:2px solid #fff;
+			background:#f00 url(img/header.png) top left repeat-x;
+			border-bottom:2px solid #fff;			
+		}
+		
+		#logo {
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			background:url(img/logo.png) top left no-repeat;
+			background-size: 100% 100%;			
 		}
 		
 		#header h1{
@@ -73,7 +83,8 @@
 			text-align:center;
 			font-size:1em;
 			color:#fff;
-			padding:0;
+			padding:0;			
+			font-size:2em;
 		}
 		
 		#main {
@@ -90,6 +101,7 @@
 			right:0;
 			border-bottom:1px solid #ccc;
 			text-align:center;
+			cursor:pointer;
 		}
 		
 		#main .notizia img{
@@ -102,24 +114,26 @@
 			bottom:0;
 			left:0;
 			right:0;
-			background:#ff0; 
+			background:#000; 
 		}
 		
 		.pmenu {
 			position:relative;
-			border-top:2px solid #fff;
-			background: #000;
+			border-top:0px solid #fff;
+			background: #000 url(img/btn.png) repeat-x;
 			color:#fff;
+			cursor:pointer;
+			/* IE10 Consumer Preview */ 
+
 		}
 		
 		.pmenu:hover {			
-			background: #fff;
-			color:#000;
+			background: #203943 url(img/btn-hover.png) repeat-x;			
 		}
 		
 		.pmenu h4 {
 			margin:0 auto;
-			text-align:center;
+			text-align:center;			
 		}
 		
 		.loader {
@@ -130,10 +144,7 @@
 			background:#000 url(img/errore.png) center center no-repeat;
 		}		
 		
-		/* SCROLLBAR PERSONALIZZAZIONI */
-		.mCSB_container{
-			width:100%;
-		}
+	
     </style>
 	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/idangerous.swiper-2.1.min.js"></script>
@@ -147,6 +158,7 @@
 	</div>
 	<div id="pagina">
 		<div id="header">
+        	<div id="logo"></div>
 			<h1>NEWS</h1>
 		</div>
 		
@@ -176,11 +188,12 @@
 			hUnit = Math.ceil($(window).height()/14);
 			hMain = $(window).height() - hUnit*5 - 2;
 			$('#header').css({'height': hUnit *2 + 'px'});
-			$('#header').css({'background-size':  hUnit *2 + 'px auto'});
+			$('#logo').css({'height': hUnit *2 + 'px', 'width':hUnit *2 + 'px'});
+			//$('#header').css({'background-size': 'auto ' + hUnit *2 + 'px'});
 			$('#header h1').css({'line-height': hUnit*2 + 'px'});
 			$('#main').css({'top':  hUnit *2 + 2 + 'px', 'height': hMain + 'px'});
 			$('#main .notizia').css({'height': Math.ceil(hMain/3) + 'px'});
-			$('#footer').css({'height': hUnit *3 + 6 + 'px'});
+			$('#footer').css({'height': hUnit *3 + 'px'});
 			$('.pmenu').css({'height': hUnit + 'px'});
 			$('.pmenu h4').css({'line-height': hUnit + 'px'});		
 			
@@ -194,21 +207,8 @@
 				mode:'vertical',
 				momentumBounce:false,
   
-			});			
-			
-
-			
-			/*
-			$('#main').mCustomScrollbar({
-				horizontalScroll:false,
-				autoHideScrollbar:true,
-				autoDraggerLength: false,
-				scrollInertia: 10,
-				theme:"light-thin"
 			});	
-			*/			
-			//$('#main').mCustomScrollbar('update');
-			
+						
 			
 		}
 		
