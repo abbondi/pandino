@@ -48,7 +48,7 @@
 			cursor:pointer;
 		}
 		
-		#pagina {
+		.pagina {
 			position:absolute;
 			top:0;
 			left:0;
@@ -60,31 +60,19 @@
 			display:none;
 		}
 		
-		#header {
+		.header {
 			position:absolute;
 			top:0;
 			left:0;
 			right:0;
-			background:#f00 url(img/header.png) top left repeat-x;
-			border-bottom:2px solid #fff;			
+			background: #000 url(img/btn.png) repeat-x;
 		}
-		
-		#logo {
-			position:absolute;
-			top:0;
-			left:0;
-			right:0;
-			background:url(img/logo.png) top left no-repeat;
-			background-size: 100% 100%;			
-		}
-		
-		#header h1{
+				
+		.header h4{
 			margin:0 auto;
 			text-align:center;
-			font-size:1em;
 			color:#fff;
-			padding:0;			
-			font-size:2em;
+			padding:0;	
 		}
 		
 		#main {
@@ -119,7 +107,6 @@
 		
 		.pmenu {
 			position:relative;
-			border-top:0px solid #fff;
 			background: #000 url(img/btn.png) repeat-x;
 			color:#fff;
 			cursor:pointer;
@@ -144,7 +131,13 @@
 			background:#000 url(img/errore.png) center center no-repeat;
 		}		
 		
-	
+		.back-home {
+			position:absolute;
+			height:100%;
+			width:auto;
+			background:#f00;
+			cursor:pointer;
+		}
     </style>
 	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/idangerous.swiper-2.1.min.js"></script>
@@ -156,10 +149,9 @@
 	<div id="riprova">
 		RIPROVA
 	</div>
-	<div id="pagina">
-		<div id="header">
-        	<div id="logo"></div>
-			<h1>NEWS</h1>
+	<div id="home" class="pagina">
+		<div class="header">
+			<h4>NEWS</h4>
 		</div>
 		
 		<div id="main" class="swiper-container">
@@ -175,7 +167,69 @@
 			<div class="pmenu"><h4>PRENOTA</h4></div>
 		</div>
 	</div>
+    
+    <div id="notizia" class="pagina">
+		<div class="header">
+        	<div class="back-home"></div>
+			<h4>NEWS</h4>
+		</div>
+		
+		<div id="notizia-main" class="swiper-container">
+			<div class="swiper-wrapper">
+				
+			</div>
+		</div>
+		<div class="swiper-scrollbar"></div>
+	</div>
+    
     <script>
+	function notizia(numNot) {
+		
+		var urlJsonp = 'http://www.massimoabbondi.it/apps/pandino/data/jsonp.php';
+		
+		function jsonpCallback(response){
+			$('#notizia-main .swiper-wrapper').append(response);
+			$('#notizia .header h4').html(numNot);
+			var hUnit = 0;
+			var hMain = 0;
+			hUnit = Math.ceil($(window).height()/14);
+			hMain = $(window).height() - hUnit*1 - 0;
+			
+			$('#notizia-main').css({'top':  hUnit *1 + 0 + 'px', 'height': hMain + 'px'});
+			$('#notizia-main .notizia').css({'height': Math.ceil(hMain/3) + 'px'});
+						
+			
+			$('.back-home').css('width', hUnit + 'px');
+			$('.back-home').click(function(){
+				$('#notizia').css('display','none');
+				
+			});
+			
+			$('#notizia').css('display','block');
+			
+			
+			var mySwiperN = new Swiper('#notizia-main',{
+				mode:'horizontal',
+				momentumBounce:false,
+				 
+			});	
+						
+			
+		}
+		
+		$.ajax({
+			url: urlJsonp,
+			dataType: 'jsonp',
+			error: function(xhr, status, error) {
+					//alert(error);
+					},
+			success: jsonpCallback			
+		});
+		
+	};
+	
+	
+	
 	
 	function appInizia() {
 		
@@ -186,22 +240,22 @@
 			var hUnit = 0;
 			var hMain = 0;
 			hUnit = Math.ceil($(window).height()/14);
-			hMain = $(window).height() - hUnit*5 - 2;
-			$('#header').css({'height': hUnit *2 + 'px'});
-			$('#logo').css({'height': hUnit *2 + 'px', 'width':hUnit *2 + 'px'});
+			hMain = $(window).height() - hUnit*4 - 0;
+			$('.header').css({'height': hUnit *1 + 'px'});
+			//$('#logo').css({'height': hUnit *2 + 'px', 'width':hUnit *2 + 'px'});
 			//$('#header').css({'background-size': 'auto ' + hUnit *2 + 'px'});
-			$('#header h1').css({'line-height': hUnit*2 + 'px'});
-			$('#main').css({'top':  hUnit *2 + 2 + 'px', 'height': hMain + 'px'});
+			$('.header h4').css({'line-height': hUnit*1 + 'px'});
+			$('#main').css({'top':  hUnit *1 + 0 + 'px', 'height': hMain + 'px'});
 			$('#main .notizia').css({'height': Math.ceil(hMain/3) + 'px'});
 			$('#footer').css({'height': hUnit *3 + 'px'});
 			$('.pmenu').css({'height': hUnit + 'px'});
 			$('.pmenu h4').css({'line-height': hUnit + 'px'});		
 			
 			$('#sfondo').css('display','none');
-			$('#pagina').css('display','block');
+			$('#home').css('display','block');
 			
 			
-			var mySwiper = new Swiper('.swiper-container',{
+			var mySwiper = new Swiper('#main',{
 				slidesPerView: 3,
 				slidesPerGroup:3,
 				mode:'vertical',
