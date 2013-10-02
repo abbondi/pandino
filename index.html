@@ -264,7 +264,21 @@
 	text-align:center;
 	font-size:2em;
 }
-    </style>
+
+.novita {
+	position:absolute;
+	width:100%;
+	display:none;	
+	padding:0;
+}
+
+.novita img{
+	width:100%;
+	height:auto;
+	margin:0;
+	border:none;	
+}
+ 	</style>
 	<script src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="js/idangerous.swiper-2.1.min.js"></script>
@@ -356,6 +370,22 @@
 		</div>
 	</div>
     <script>
+	
+	/* TEST */
+	var ULettura = 3;
+	
+	function ultimeNews() {
+		$('.novita').each(function() {
+    		//alert(this.id);
+		});
+	
+	}
+	
+	
+	
+	
+	
+	/* TEST fine */
 	
 	// FUNZIONI di servizio
 	var map = null;
@@ -655,6 +685,9 @@
 				
   
 			});	
+			
+			//TEST;
+			ultimeNews();
 					
 			
 		}
