@@ -170,7 +170,8 @@
 	}
 	
 	.immagine {
-		display: table;
+		/*display: table;*/
+		position:relative;
 	}
 	
 	.immagine img {
@@ -214,9 +215,11 @@
 }
 
 .centratoVert {
+	position:relative;
 	width:100%;
-	display:table-cell;
-	vertical-align:middle;
+	/*display:table-cell;*/
+	/*vertical-align:middle;*/
+	overflow:hidden;
 }
 
 .mappaOff {
@@ -272,14 +275,19 @@
 	padding:0;
 }
 
-.novita img{
+#main .notizia .novita img{
 	width:100%;
 	height:auto;
 	margin:0;
 	border:none;	
 }
+
+.centratoVert img {
+	position:relative;
+}
  	</style>
 	<script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="js/idangerous.swiper-2.1.min.js"></script>
 	<script src="js/idangerous.swiper.scrollbar-2.1.js"></script>
@@ -372,20 +380,37 @@
     <script>
 	
 	/* TEST */
-	var ULettura = 3;
+	var arrLette = [];
+	
+	if($.cookie('mieLetture')) {
+		//alert('esiste');
+		arrLette = JSON.parse($.cookie('mieLetture'));
+	} else {
+		//alert('NON esiste');
+	};
+	
+	var arrNotizie = [];
 	
 	function ultimeNews() {
-		$('.novita').each(function() {
-    		//alert(this.id);
+		$('.notizia').each(function() {
+			var numNotizia = this.id.split('n')
+			arrNotizie.push(parseInt(numNotizia[1]));			
+		});
+		
+		$.each(arrNotizie, function( index, value ) {
+			// se inArray restituisce -1 non ha trovato la notizia fra quelle lette;
+			if ($.inArray(value, arrLette)==-1) {
+				$('#n' + value + ' .novita').css('display','block');
+			}
+			
 		});
 	
 	}
 	
-	
-	
-	
-	
 	/* TEST fine */
+	
+	
+	
 	
 	// FUNZIONI di servizio
 	var map = null;
@@ -555,13 +580,21 @@
 			
 			$('.pagina').css('display','none');
 			$('#gallery').css('display','block');
-			
+	
+			$('.centratoVert img').each(function() {				
+				var altezza = $(this).height();
+				//alert(altezza);
+				if (altezza<hMain) {
+					$(this).css({'top': Math.floor((hMain-altezza)*0.5) + 'px'});
+				}
+			});
+		
 			
 			var mySwiperG = new Swiper('#galleria',{
 				mousewheelControl: true,
 				slidesPerView: 1,
 				slidesPerGroup:1,
-				mode:'horizontal',
+				mode:'vertical',
 				
   
 			});	
@@ -584,7 +617,7 @@
 	
 	
 	// FUNZIONE SU CLICK NOTIZIA
-	function notizia(numNot) {
+	function notizia(numNot, IDNuova) {
 		
 		var urlJsonpN = 'http://www.massimoabbondi.it/apps/pandino/data/notizia.php';
 		
@@ -634,8 +667,23 @@
 				initialSlide:numNot
 			});				
 			// fine codice swipe e scroll pages
-				
-							
+			
+			// se la notizia è nuova, tolgo il segno di notifica dall'elenco in home visto che l'ho appena cliccata;
+			$('#n' + IDNuova + ' .novita').css('display','none');
+			if ($.inArray(IDNuova, arrLette)==-1) {
+				// se ho già dieci elementi rimuovo il più vecchio;
+				if(arrLette.length>9) {
+					arrLette.splice(0,1);
+				}
+				arrLette.push(IDNuova);
+				$.cookie('mieLetture',  JSON.stringify(arrLette), { expires: 30, path: '/' });
+			}
+			
+			/*	TEST		
+			$.each(arrLette, function( index, value ) {
+				alert( index + ": " + value );
+			});
+			*/				
 		}
 		
 		$.ajax({
