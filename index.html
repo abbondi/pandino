@@ -679,11 +679,17 @@
 				$.cookie('mieLetture',  JSON.stringify(arrLette), {expires: 30});
 			}
 			
-			/*	TEST		
+			/*	TEST */			
 			$.each(arrLette, function( index, value ) {
 				alert( index + ": " + value );
 			});
-			*/				
+			
+			alert ('ora leggo il cookie');
+			var cookieTmp = JSON.parse($.cookie('mieLetture'));
+			$.each(cookieTmp, function( index, value ) {
+				alert( index + ": " + value );
+			});
+						
 		}
 		
 		$.ajax({
