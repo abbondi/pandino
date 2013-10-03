@@ -425,35 +425,24 @@
 	/* FINE GESTIONE COOKIE */
 	
 	/* TEST */	
-	document.addEventListener("deviceready", onDeviceReady, false);
-
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
-        db.transaction(populateDB, errorCB, successCB);
-    }
-
-    // Populate the database 
-    //
-    function populateDB(tx) {
-         tx.executeSql('DROP TABLE IF EXISTS DEMO');
-         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-    }
-
-    // Transaction error callback
-    //
-    function errorCB(tx, err) {
-        alert("Error processing SQL: "+err);
-    }
-
-    // Transaction success callback
-    //
-    function successCB() {
-        alert("success!");
-    }
+	function setit(database,valori) {
+		localStorage.setItem(database, valori);
+		//document.getElementById("stringResponseText").innerHTML = "Set string value: " + stringValue;
+	}
+	function nullit(database) {
+		localStorage.setItem(database, null);
+		//document.getElementById("stringResponseText").innerHTML = "Set string value to null.";
+	}
+	function getit(database) {
+		var risposta = '';
+		var cookieSt=localStorage.getItem(database); 
+		if (cookieSt!=null && cookieSt!='')
+		{
+			risposta = cookieSt;
+		}
+				
+		return risposta;
+	}
 
 	
 	
@@ -464,7 +453,8 @@
 	
 	
 		
-	var arrLette = (checkCookie('mieLetture')).split(',');
+	//var arrLette = (checkCookie('mieLetture')).split(',');
+	var arrLette = (getit('mieLetture')).split(',');
 	var arrNotizie = [];
 		
 	function ultimeNews() {
@@ -752,7 +742,8 @@
 					arrLette.splice(0,1);
 				}
 				arrLette.push(IDNuova);
-				setCookie('mieLetture',arrLette.toString() ,30);
+				//setCookie('mieLetture',arrLette.toString() ,30);
+				setit('mieLetture',arrLette.toString());
 			}
 				
 												
