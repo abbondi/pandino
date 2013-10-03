@@ -287,7 +287,6 @@
 }
  	</style>
 	<script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="js/idangerous.swiper-2.1.min.js"></script>
 	<script src="js/idangerous.swiper.scrollbar-2.1.js"></script>
@@ -378,23 +377,61 @@
 		</div>
 	</div>
     <script>
+	/* GESTIONE COOKIE */
+	function getCookie(c_name)
+	{
+		var c_value = document.cookie;
+		var c_start = c_value.indexOf(" " + c_name + "=");
+		if (c_start == -1)
+		{
+			c_start = c_value.indexOf(c_name + "=");
+		}
+		if (c_start == -1)
+		{
+			c_value = null;
+		}
+		else
+		{
+			c_start = c_value.indexOf("=", c_start) + 1;
+			var c_end = c_value.indexOf(";", c_start);
+			if (c_end == -1)
+			{
+				c_end = c_value.length;
+			}
+			c_value = unescape(c_value.substring(c_start,c_end));
+		}
+		return c_value;
+	}
 	
-	/* TEST */
-	var arrLette = [];
+	function setCookie(c_name,value,exdays)
+	{
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		document.cookie=c_name + "=" + c_value;
+	}
 	
-	if($.cookie('mieLetture')) {
-		//alert('esiste');
-		arrLette = JSON.parse($.cookie('mieLetture'));
-	} else {
-		//alert('NON esiste');
-	};
+	function checkCookie(c_name)
+	{
+		var risposta = '';
+		var cookieSt=getCookie(c_name);
+		if (cookieSt!=null && cookieSt!='')
+		{
+			risposta = cookieSt;
+		}
+				
+		return risposta;
+	}			
+	/* FINE GESTIONE COOKIE */
 	
+	/* TEST */		
+	var arrLette = (checkCookie('mieLetture')).split(',');
 	var arrNotizie = [];
-	
+		
 	function ultimeNews() {
 		$('.notizia').each(function() {
 			var numNotizia = this.id.split('n')
-			arrNotizie.push(parseInt(numNotizia[1]));			
+			arrNotizie.push(numNotizia[1]);			
 		});
 		
 		$.each(arrNotizie, function( index, value ) {
@@ -676,20 +713,10 @@
 					arrLette.splice(0,1);
 				}
 				arrLette.push(IDNuova);
-				$.cookie('mieLetture',  JSON.stringify(arrLette), {expires: 30});
+				setCookie('mieLetture',arrLette.toString() ,30);
 			}
-			
-			/*	TEST */			
-			$.each(arrLette, function( index, value ) {
-				alert( index + ": " + value );
-			});
-			
-			alert ('ora leggo il cookie');
-			var cookieTmp = JSON.parse($.cookie('mieLetture'));
-			$.each(cookieTmp, function( index, value ) {
-				alert( index + ": " + value );
-			});
-						
+				
+												
 		}
 		
 		$.ajax({
