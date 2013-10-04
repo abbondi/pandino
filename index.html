@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="http://www.massimoabbondi.it/apps/pandino/pandino.css">
 	
     <style>
-        body {
+		body {
 			width: 100%;
-            height: 100%;
+			height: 100%;
 			margin:0;
 			overflow:hidden;
-            font-size: 1em;
+			font-size: 1em;
 			background:#baaca6;		            
-        }
+		}
 		
 		#sfondo {
 			position:absolute;
@@ -111,7 +111,7 @@
 			color:#fff;
 			cursor:pointer;
 			/* IE10 Consumer Preview */ 
-
+		
 		}
 		
 		.pmenu:hover {			
@@ -140,151 +140,156 @@
 			cursor:pointer;
 		}
 	
-	.page-inner {}	
+		.page-inner {}	
+			
+		.page-inner p {
+			/*font-family:Arial, Helvetica, sans-serif;*/
+			/*font-size:32px;*/
+			/*text-align:justify;*/
+			text-align:left;
+			margin:5%;	
+		}
 		
-	.page-inner p {
-		/*font-family:Arial, Helvetica, sans-serif;*/
-		/*font-size:32px;*/
-		/*text-align:justify;*/
-		text-align:left;
-		margin:5%;	
-	}
+		.page-inner h2 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size:12pt;	
+			line-height:12pt;
+			color:#fff;
+			margin:5%;	
+		}
+		
+		.page-inner img {
+			text-align:left;
+			margin:5%;
+			width:90%;
+			height:auto;
+		}
+					
+		.trasparente {
+			z-index:999;
+		}
+		
+		.immagine {
+			/*display: table;*/
+			position:relative;
+		}
+		
+		.immagine img {
+			width:100%;
+			height:auto;	
+		}
+		
+		/* PERSONALIZZAZIONI */
+		.swiper-slide {
+			width: 100%;
+			height: 100%;
+		}
 	
-	.page-inner h2 {
-		font-family:Arial, Helvetica, sans-serif;
-		font-size:12pt;	
-		line-height:12pt;
-		color:#fff;
-		margin:5%;	
-	}
-	
-	.page-inner img {
-		text-align:left;
-		margin:5%;
-		width:90%;
-		height:auto;
-	}
-				
-	.trasparente {
-		z-index:999;
-	}
-	
-	.immagine {
-		/*display: table;*/
-		position:relative;
-	}
-	
-	.immagine img {
-		width:100%;
-		height:auto;	
-	}
-
-/* PERSONALIZZAZIONI */
-.swiper-slide {
-	width: 100%;
-	height: 100%;
-}
-	
-.swiper-pages {
-	height: 100%;
-}
-.scroll-container {
-	height: 100%;
-	width: 100%;
-}
-.scroll-container .swiper-slide {
-	width: 100%;
-}
-
-/* Scrollbars */
-.swiper-scrollbar {
-	position: absolute;
-	right: 5px;
-	top: 2%;
-	width: 2px;
-	height: 96%;
-	background: rgba(0,0,0,0.2);
-	z-index: 10;
-}
-.swiper-scrollbar-drag {
-	height: 100%;
-	width: 100%;
-	position: relative;
-	background: rgba(255,255,255,0.5);
-	border-radius: 10px;
-}
-
-.centratoVert {
-	position:relative;
-	width:100%;
-	/*display:table-cell;*/
-	/*vertical-align:middle;*/
-	overflow:hidden;
-}
-
-.mappaOff {
-	background: #333 url(img/mappa.jpg) center center no-repeat;
-	background-size:100% auto;
-}
-
-#indicazioni {
-	position:absolute;
-	bottom:0;
-	left:0;
-	right:0;
-	background:#000; 
-}
-
-#indicazioni .pmenu h4 {
-	font-size:0.8em;
-	font-weight:normal;	
-}
-
-#chiamaOra {
-	position:absolute;
-	bottom:0;
-	left:0;
-	right:0;
-	background:#000; 
-}
-
-#chiamaOra a:link {
-	color:#fff;
-	text-decoration:none;
-}
-
-#scheda {
-	display: table;
-	width:100%;
-	background: #baaca6 url(img/sf-pandino.png) center center no-repeat;
-	background-size:80% auto;
-}
-
-#scheda .cella {
-	width:100%;
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
-	font-size:2em;
-}
-
-.novita {
-	position:absolute;
-	width:100%;
-	display:none;	
-	padding:0;
-}
-
-#main .notizia .novita img{
-	width:100%;
-	height:auto;
-	margin:0;
-	border:none;	
-}
-
-.centratoVert img {
-	position:relative;
-}
+		.swiper-pages {
+			height: 100%;
+		}
+		.scroll-container {
+			height: 100%;
+			width: 100%;
+		}
+		.scroll-container .swiper-slide {
+			width: 100%;
+		}
+		
+		/* Scrollbars */
+		.swiper-scrollbar {
+			position: absolute;
+			right: 5px;
+			top: 2%;
+			width: 2px;
+			height: 96%;
+			background: rgba(0,0,0,0.2);
+			z-index: 10;
+		}
+		.swiper-scrollbar-drag {
+			height: 100%;
+			width: 100%;
+			position: relative;
+			background: rgba(255,255,255,0.5);
+			border-radius: 10px;
+		}
+		
+		.centratoVert {
+			position:relative;
+			width:100%;
+			/*display:table-cell;*/
+			/*vertical-align:middle;*/
+			overflow:hidden;
+		}
+		
+		.mappaOff {
+			background: #333 url(img/mappa.jpg) center center no-repeat;
+			background-size:100% auto;
+		}
+		
+		#indicazioni {
+			position:absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			background:#000; 
+		}
+		
+		#indicazioni .pmenu h4 {
+			font-size:0.8em;
+			font-weight:normal;	
+		}
+		
+		#chiamaOra {
+			position:absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			background:#000; 
+		}
+		
+		#chiamaOra a:link {
+			color:#fff;
+			text-decoration:none;
+		}
+		
+		#scheda {
+			display: table;
+			width:100%;
+			background: #baaca6 url(img/sf-pandino.png) center center no-repeat;
+			background-size:80% auto;
+		}
+		
+		#scheda .cella {
+			width:100%;
+			display:table-cell;
+			vertical-align:middle;
+			text-align:center;
+			font-size:2em;
+		}
+		
+		#scheda .cella a:link{
+			color:#99042f;
+			text-decoration:none;	
+		}
+		
+		.novita {
+			position:absolute;
+			width:100%;
+			display:none;	
+			padding:0;
+		}
+		
+		#main .notizia .novita img{
+			width:100%;
+			height:auto;
+			margin:0;
+			border:none;	
+		}
+		
+		.centratoVert img {
+			position:relative;
+		}
  	</style>
 	<script src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -360,7 +365,7 @@
         	<div class="cella">
                 Per ordinare via telefono<br>
                 chiamaci al numero:<br>
-                +39 <strong>02 80583276</strong>
+                +39 <strong><a href="tel:+390280583276">02 80583276</a></strong>
                 <br>
                 <br>
                 Tutti i giorni<br>
@@ -553,7 +558,7 @@
 		hUnit = Math.ceil($(window).height()/14);
 		hMain = $(window).height() - hUnit*2 - 0;
 		
-		$('.back-home').css('width', hUnit + 'px');
+		$('.back-home').css('width', 2*hUnit + 'px');
 		$('.back-home').click(function(){
 			$('.pagina').css('display','none');
 			$('#home').css('display','block');
@@ -582,7 +587,7 @@
 		hUnit = Math.ceil($(window).height()/14);
 		hMain = $(window).height() - hUnit*2 - 0;
 		
-		$('.back-home').css('width', hUnit + 'px');
+		$('.back-home').css('width', 2*hUnit + 'px');
 		$('.back-home').click(function(){
 			$('.pagina').css('display','none');
 			$('#home').css('display','block');
@@ -629,7 +634,7 @@
 			hUnit = Math.ceil($(window).height()/14);
 			hMain = $(window).height() - hUnit*1 - 0;
 			
-			$('.back-home').css('width', hUnit + 'px');
+			$('.back-home').css('width', 2*hUnit + 'px');
 			$('.back-home').click(function(){
 				$('.pagina').css('display','none');
 				$('#home').css('display','block');
@@ -696,7 +701,7 @@
 			hUnit = Math.ceil($(window).height()/14);
 			hMain = $(window).height() - hUnit*1 - 0;
 			
-			$('.back-home').css('width', hUnit + 'px');
+			$('.back-home').css('width', 2*hUnit + 'px');
 			$('.back-home').click(function(){
 				$('.pagina').css('display','none');
 				$('#home').css('display','block');
