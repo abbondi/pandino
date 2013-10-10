@@ -500,7 +500,7 @@
 			map = new google.maps.Map(document.getElementById('gMap'), options);
 			
 			//percorso;
-			
+			/*
 			var directionsService = new google.maps.DirectionsService();
 			var directionsRequest = {
 				origin: latlngME,
@@ -525,7 +525,7 @@
 					
 				}
 			);
-			
+			*/
 			// fine percorso;	
 						
 			markerLC = new google.maps.Marker({ position: puntoLC, map: map, icon: 'img/marker-pandino.png', title: 'Pandino' });
@@ -577,7 +577,7 @@
 	// FUNZIONE MAPS
 	function maps() {
 		
-		var coordinateTXT = '45.464984|9.193463';
+		var coordinateTXT = '45.464508|9.193598';
 		var coordinateLC = coordinateTXT.split("|");
 		var latLC  = coordinateLC[0];
 		var lngLC  = coordinateLC[1];
