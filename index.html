@@ -220,6 +220,7 @@
 			/*display:table-cell;*/
 			/*vertical-align:middle;*/
 			overflow:hidden;
+			
 		}
 		
 		.mappaOff {
@@ -626,13 +627,21 @@
 	function gallery() {
 		
 		var urlJsonpG = 'http://www.massimoabbondi.it/apps/pandino/data/gallery.php';
+		var hImgNat = 1024;
+		var wImgNat = 768;
+		var hImg = 0;
+		var wImg = 0;
+		var mrgTImg = 0;
+		var mrgLImg = 0;
 		
 		function jsonpCallback(response){
 			$('#galleria .swiper-wrapper').append(response);
 			var hUnit = 0;
 			var hMain = 0;
+			var wMain = 0;
 			hUnit = Math.ceil($(window).height()/14);
 			hMain = $(window).height() - hUnit*1 - 0;
+			wMain = $(window).width();
 			
 			$('.back-home').css('width', 2*hUnit + 'px');
 			$('.back-home').click(function(){
@@ -646,20 +655,28 @@
 			$('.header h4').css({'line-height': hUnit*1 + 'px'});
 			$('#galleria').css({'top':  hUnit *1 + 0 + 'px', 'height': hMain + 'px'});
 			$('.centratoVert ').css({'height': hMain + 'px'});
-			//$('#galleria .immagine').css({'height': Math.ceil(hMain/3) + 'px'});
 			
+			if (Math.floor((hMain/hImgNat)*wImgNat)<wMain) {
+				// immagini alte tutta la zona centratoVert con barre verticali a sx e dx;
+				mrgTImg = 0;
+				mrgLImg = Math.floor((wMain - (hMain/hImgNat)*wImgNat)*0.5);
+				hImg = hMain;
+				wImg = Math.floor((hMain/hImgNat)*wImgNat);
+				
+				
+			} else {
+				// immagini larghe tutta la zona centratoVert con barre orizzontali sopra e sotto;
+				mrgTImg =  Math.floor((hMain - (wMain/wImgNat)*hImgNat)*0.5);
+				mrgLImg = 0;
+				hImg = Math.floor((wMain/wImgNat)*hImgNat);
+				wImg = wMain;
+				
+			}
+			//$('#galleria .immagine').css({'height': Math.ceil(hMain/3) + 'px'});
 			
 			$('.pagina').css('display','none');
 			$('#gallery').css('display','block');
 	
-			$('.centratoVert img').each(function() {				
-				var altezza = $(this).height();
-				//alert(altezza);
-				if (altezza<hMain) {
-					$(this).css({'top': Math.floor((hMain-altezza)*0.5) + 'px'});
-				}
-			});
-		
 			
 			var mySwiperG = new Swiper('#galleria',{
 				mousewheelControl: true,
@@ -669,7 +686,17 @@
 				
   
 			});	
-					
+			
+			$('.centratoVert img').each(function() {				
+				//var altezza = $(this).height();
+				$(this).css({'height':hImg + 'px','width':wImg + 'px','margin-top':mrgTImg + 'px','margin-left':mrgLImg + 'px'});
+				/*
+				if ((altezza<hMain) && (altezza>0)){
+					$(this).css({'top': Math.floor((hMain-altezza)*0.5) + 'px'});
+				}
+				*/
+			});
+				
 			
 		}
 		
