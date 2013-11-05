@@ -745,13 +745,14 @@
 				'top': hUnit + 'px'
 			});
 			//inizializza Pagine
-			var pages = $('.swiper-pages').swiper();
+			//var pages = $('.swiper-pages').swiper();
 		
 			//Scroll Containers
 			$('.scroll-container').each(function(){
 				$(this).swiper({
 					mode:'vertical',
 					scrollContainer: true,
+					resistance:'100%',
 					mousewheelControl: true,
 					scrollbar: {
 						container:$(this).find('.swiper-scrollbar')[0]
@@ -759,11 +760,15 @@
 				})
 			});
 			
+			
 			var mySwiperN = new Swiper('.swiper-pages', { 
 				speed:750, 
 				mode:'horizontal',
+				scrollContainer: false,
+				resistance:'100%',
 				initialSlide:numNot
-			});				
+			});	
+						
 			// fine codice swipe e scroll pages
 			
 			// se la notizia è nuova, tolgo il segno di notifica dall'elenco in home visto che l'ho appena cliccata;
