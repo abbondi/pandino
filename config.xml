@@ -34,8 +34,12 @@
 	<preference name="webviewbounce" value="false" />
 	<preference name="show-splash-screen-spinner" value="true" />
 	<preference name="auto-hide-splash-screen" value="true" />
-	<preference name="splash-screen-duration" value="3000" />
-        
+	
+	<!-- Android PREFERENCES --> 
+	<preference name="splash-screen-duration" value="3000" />	
+	<preference name="android-minSdkVersion" value="11" />
+    <preference name="android-targetSdkVersion" value="11" />
+	    
     <!-- iOS PREFERENCES -->        
     <preference name="webviewbounce" value="false" /> <!-- effetto bounce quando si raggiunge la cima o il fondo della pagina -->
     <preference name="prerendered-icon" value="true" /> <!-- non applica effetto gloss all'icona -->
