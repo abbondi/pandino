@@ -2,8 +2,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
 	id = "it.massimoabbondi.pandino"
-	version = "1.0.1"
-	versionCode = "11">
+	version = "1.0.2"
+	versionCode = "12">
 
     <name>PANDINO</name>
 
@@ -70,5 +70,9 @@
 	<gap:splash src="res/splash/ios/Default_iphone5.png" 				gap:platform="ios" width="640" height="1136" />
 	<gap:splash src="res/splash/ios/Default-Portrait.png" 				gap:platform="ios" width="768" height="1004" />
 	<gap:splash src="res/splash/ios/Default-Portrait_at_2x.png" 		gap:platform="ios" width="1536" height="2008" />
+	
+	<access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+    <access origin="https://cp.pushwoosh.com"/>
+	<access origin="http://massimoabbondi.com/" />
   
 </widget>
