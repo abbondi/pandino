@@ -23,7 +23,7 @@ function registerPushwooshIOS() {
  	//push notifications handler
 	document.addEventListener('push-notification', function(event) {
 				var notification = event.notification;
-				navigator.notification.alert(notification.aps.alert);
+				navigator.notification.alert('AVVISO INTERNO ALLA APP: \n' + notification.aps.alert);
 				
 				//to view full push payload
 				//navigator.notification.alert(JSON.stringify(notification));
