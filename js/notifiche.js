@@ -22,8 +22,9 @@ function registerPushwooshIOS() {
 
  	//push notifications handler
 	document.addEventListener('push-notification', function(event) {
+				/* inserire qui la modifica per evidenziare l'ultima news */
 				var notification = event.notification;
-				navigator.notification.alert('AVVISO INTERNO ALLA APP: \n' + notification.aps.alert);
+				navigator.notification.alert(notification.aps.alert);
 				
 				//to view full push payload
 				//navigator.notification.alert(JSON.stringify(notification));
@@ -80,7 +81,8 @@ function registerPushwooshAndroid() {
 				}
 
 				//and show alert
-				navigator.notification.alert(title);
+				/* inserire qui la modifica per evidenziare l'ultima news */
+				navigator.notification.alert('AVVISO INTERNO ALLA APP: \n' + title);
 
 				//stopping geopushes
 				pushNotification.stopGeoPushes();
