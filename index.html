@@ -887,7 +887,7 @@
 			$('.pagina').css('display','none');
 			$('#home').css('display','block');
 			$('.novita').css('display','block');
-			$('#main .notizia img').css({'height':'100%','width':'auto'});
+			$('#main .notizia img').css({'height': Math.ceil(hMain/3) + 'px','width': Math.ceil(hMain/3*2.44) +'px'});
 			
 			
 			var mySwiper = new Swiper('#main',{
