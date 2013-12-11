@@ -276,9 +276,14 @@
 		
 		.novita {
 			position:absolute;
+			top:0;
+			left:0;
 			width:100%;
-			display:none;	
+			height:100%;
+			display:none;
+			background:rgba(0,0,0,0.9);
 			padding:0;
+			z-index:30;
 		}
 		
 		#main .notizia .novita img{
@@ -301,7 +306,7 @@
     <script type="text/javascript" src="PushNotification.js"></script>
     <script type="text/javascript" src="js/notifiche.js"></script>
 	<script type="text/javascript">
-        app.initialize();
+        //app.initialize();
     </script>
 </head>
 <body>
@@ -479,7 +484,7 @@
 		$.each(arrNotizie, function( index, value ) {
 			// se inArray restituisce -1 non ha trovato la notizia fra quelle lette;
 			if ($.inArray(value, arrLette)==-1) {
-				$('#n' + value + ' .novita').css('display','block');
+				//$('#n' + value + ' .novita').css('display','block');
 			}
 			
 		});
@@ -744,7 +749,7 @@
 			
 			$('.pagina').css('display','none');
 			$('#notizia').css('display','block');
-			
+			$('.novita').css('display','none');
 					
 			// inizio codice swipe e scroll pages
 			$('.swiper-pages').css({
@@ -779,7 +784,7 @@
 			// fine codice swipe e scroll pages
 			
 			// se la notizia è nuova, tolgo il segno di notifica dall'elenco in home visto che l'ho appena cliccata;
-			$('#n' + IDNuova + ' .novita').css('display','none');
+			//$('#n' + IDNuova + ' .novita').css('display','none');
 			if ($.inArray(IDNuova, arrLette)==-1) {
 				// se ho già dieci elementi rimuovo il più vecchio;
 				if(arrLette.length>9) {
@@ -856,7 +861,44 @@
 		});
 		
 	};
-	
+
+	function aggiornaHome() {
+		
+		var urlJsonp = 'http://www.massimoabbondi.it/apps/pandino/data/home.php';
+		
+		function jsonpCallback(response){
+			$('#main').html('<div class="swiper-wrapper"></div>');
+			$('#main .swiper-wrapper').append(response);
+		
+			
+			$('.pagina').css('display','none');
+			$('#home').css('display','block');
+			
+			
+			var mySwiper = new Swiper('#main',{
+				mousewheelControl: true,
+				slidesPerView: 3,
+				slidesPerGroup:3,
+				mode:'vertical',
+  
+			});	
+			
+			//TEST;
+			ultimeNews();
+					
+			
+		}
+		
+		$.ajax({
+			url: urlJsonp,
+			dataType: 'jsonp',
+			error: function(xhr, status, error) {
+					//alert(error);
+					},
+			success: jsonpCallback			
+		});
+		
+	};	
 	
 	function riprova() {
 		$('#riprova').css('display','none');
@@ -866,8 +908,10 @@
 
 	function doConnectFunction() {
 		//alert('sei connesso');
-		// carico i contenuti;		
+		// carico i contenuti;
 		appInizia();
+		app.initialize();		
+		
 	}
 	
 	function doNotConnectFunction() {
