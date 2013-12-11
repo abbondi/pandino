@@ -24,7 +24,6 @@ function registerPushwooshIOS() {
 	document.addEventListener('push-notification', function(event) {
 				/* inserire qui la modifica per evidenziare l'ultima news */
 				aggiornaHome();
-				$('.novita').css('display','block');
 				var notification = event.notification;
 				navigator.notification.alert(notification.aps.alert);
 				
@@ -84,8 +83,7 @@ function registerPushwooshAndroid() {
 
 				//and show alert
 				/* inserire qui la modifica per evidenziare l'ultima news */
-				aggiornaHome()
-				$('.novita').css('display','block');
+				aggiornaHome();				
 				navigator.notification.alert(title);
 
 				//stopping geopushes
