@@ -71,6 +71,13 @@
 	<gap:splash src="res/splash/ios/Default-Portrait.png" 				gap:platform="ios" width="768" height="1004" />
 	<gap:splash src="res/splash/ios/Default-Portrait_at_2x.png" 		gap:platform="ios" width="1536" height="2008" />
 	
+	
+	<!-- The above is equivalent to these three declarations -->
+	<allow-navigation href="http://*/*" />
+	<allow-navigation href="https://*/*" />
+	<allow-navigation href="data:*" />
+
+	
 	<access origin="http://127.0.0.1*"/> <!-- allow local pages -->
     <access origin="https://cp.pushwoosh.com"/>
 	<access origin="*" />
