@@ -26,7 +26,7 @@
    	<feature name="http://api.phonegap.com/1.0/camera"/>
 	<feature name="http://api.phonegap.com/1.0/notification"/>
         
-    <preference name="phonegap-version" value="2.9.0" />
+    <preference name="phonegap-version" value="cli-5.1.1" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen"       value="false" />	
