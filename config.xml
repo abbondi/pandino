@@ -2,8 +2,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
 	id = "it.massimoabbondi.pandino"
-	version = "1.0.4"
-	versionCode = "14">
+	version = "1.0.5"
+	versionCode = "15">
 
     <name>PANDINO</name>
 
@@ -18,7 +18,7 @@
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
 	<gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
-	<gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" version="1.1.1" />
+	<gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
          
     <feature name="http://api.phonegap.com/1.0/device" />
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
@@ -27,7 +27,7 @@
    	<feature name="http://api.phonegap.com/1.0/camera"/>
 	<feature name="http://api.phonegap.com/1.0/notification"/>
         
-    <preference name="phonegap-version" value="cli-5.1.1" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen"       value="false" />	
